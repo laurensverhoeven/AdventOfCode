@@ -1,0 +1,54 @@
+Correct answer: 2850000002454
+
+Index for 100:
+89
+
+
+At generation 100, pots 0 to 89 are empty. Pot 89 is the first to contain a plant. The following pots are show here:
+
+000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+899999999990000000000111111111122222222223333333333444444444455555555556666666666777777777788888888889999999999
+901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+###.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+
+Every generation from then on has the same sequence, moved one space to the right. In generation n, the first pot to contain a plant will be n - 11 The last pot to contain a plant will be n + 99.
+
+The sequence contains 57 plants.
+
+
+The sum of the numbers of the pots containing plants is 3081 plus 57 times the number of the first pot containing a plant in that generation.
+3081 + 57 * (n - 11)
+3081 + 57 * (50000000000 - 11)
+
+for n in range(100, 120):
+	PlantNumber = 2971 + 57 * (n - 11)
+	print("After " + str(n) + " generations, what is the sum of the numbers of all pots which contain a plant?", PlantNumber)
+
+
+After 100 generations, what is the sum of the numbers of all pots which contain a plant? 8154
+After 101 generations, what is the sum of the numbers of all pots which contain a plant? 8211	
+
+After 110 generations, what is the sum of the numbers of all pots which contain a plant? 8724
+
+
+
+After 100 generations, what is the sum of the numbers of all pots which contain a plant? 8044
+After 101 generations, what is the sum of the numbers of all pots which contain a plant? 8101
+After 102 generations, what is the sum of the numbers of all pots which contain a plant? 8158
+After 103 generations, what is the sum of the numbers of all pots which contain a plant? 8215
+After 104 generations, what is the sum of the numbers of all pots which contain a plant? 8272
+After 105 generations, what is the sum of the numbers of all pots which contain a plant? 8329
+After 106 generations, what is the sum of the numbers of all pots which contain a plant? 8386
+After 107 generations, what is the sum of the numbers of all pots which contain a plant? 8443
+After 108 generations, what is the sum of the numbers of all pots which contain a plant? 8500
+After 109 generations, what is the sum of the numbers of all pots which contain a plant? 8557
+After 110 generations, what is the sum of the numbers of all pots which contain a plant? 8614
+After 111 generations, what is the sum of the numbers of all pots which contain a plant? 8671
+After 112 generations, what is the sum of the numbers of all pots which contain a plant? 8728
+After 113 generations, what is the sum of the numbers of all pots which contain a plant? 8785
+After 114 generations, what is the sum of the numbers of all pots which contain a plant? 8842
+After 115 generations, what is the sum of the numbers of all pots which contain a plant? 8899
+After 116 generations, what is the sum of the numbers of all pots which contain a plant? 8956
+After 117 generations, what is the sum of the numbers of all pots which contain a plant? 9013
+After 118 generations, what is the sum of the numbers of all pots which contain a plant? 9070
+After 119 generations, what is the sum of the numbers of all pots which contain a plant? 9127
