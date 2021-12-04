@@ -57,8 +57,8 @@ def main():
 
     depth_measurements = get_input()
 
-    # answer_1 = determine_increasing_count(depth_measurements)
-    # print(f"The first answer is {answer_1}")
+    answer_1 = determine_increasing_count(depth_measurements)
+    print(f"The first answer is {answer_1}")
 
     answer_2 = determine_average_increasing_count(depth_measurements)
     print(f"The second answer is {answer_2}")

@@ -4,7 +4,7 @@ from pprint import pformat, pprint  # noqa: F401
 import math  # noqa: F401
 
 
-def ReadFile(file_path):
+def read_file(file_path):
 
     with open(file_path, "r") as f:
         return f.read().splitlines()
@@ -12,55 +12,61 @@ def ReadFile(file_path):
 
 def get_input():
 
-    FilePath = "./"
-    FileName = "input.txt"
-    # FileName = "input_test.txt"
+    file_path = "./"
+    file_name = "input.txt"
+    # file_name = "input_test.txt"
 
-    InputFile = FilePath + FileName
-
-    return [int(line) for line in ReadFile(InputFile)]
+    return read_file(file_path + file_name)
 
 
-def determine_increasing_count(depth_measurements):
+def parse_direction_1(line):
 
-    increasing_count = 0
+    step = line.partition(" ")
 
-    last_measurement = depth_measurements[0]
-    for depth_measurement in depth_measurements[1:]:
-        if depth_measurement > last_measurement:
-            increasing_count += 1
-        last_measurement = depth_measurement
+    direction = str(step[0])
+    distance = int(step[2])
 
-    return increasing_count
+    direction_options = {
+        "forward": (1, 0),
+        "down": (0, 1),
+        "up": (0, -1),
+    }
+
+    return tuple(distance * unit for unit in direction_options[direction])
 
 
-def determine_average_increasing_count(depth_measurements):
+def determine_position_1(steps):
+    position = (0, 0)
+    for step in steps:
 
-    increasing_count = 0
+        position = tuple(map(sum, zip(position, step)))
+        # print(f"Position is {position}")
 
-    sums = []
-    sums.append(sum(depth_measurements[0:3]))
-    sums.append(sum(depth_measurements[1:4]))
+    return position[0] * position[1]
 
-    i = 2
-    measurements_count = len(depth_measurements)
-    while i < measurements_count:
-        if sums[1] > sums.pop(0):
-            increasing_count += 1
-        sums.append(sum(depth_measurements[i - 2 : i + 1]))
-        i += 1
 
-    return increasing_count
+def determine_position_2(steps):
+    position = (0, 0)
+    aim = 0
+    for forward_change, aim_change in steps:
+
+        aim += aim_change
+        depth_change = forward_change * aim
+        position = (position[0] + forward_change, position[1] + depth_change)
+        print(f"forward_change: {forward_change} , aim_change: {aim_change}")
+        print(f"Position is {position}, aim is {aim}")
+
+    return position[0] * position[1]
 
 
 def main():
 
-    depth_measurements = get_input()
+    steps_1 = [parse_direction_1(line) for line in get_input()]
 
-    # answer_1 = determine_increasing_count(depth_measurements)
-    # print(f"The first answer is {answer_1}")
+    answer_1 = determine_position_1(steps_1)
+    print(f"The first answer is {answer_1}")
 
-    answer_2 = determine_average_increasing_count(depth_measurements)
+    answer_2 = determine_position_2(steps_1)
     print(f"The second answer is {answer_2}")
 
 

@@ -20,3 +20,7 @@ puzzle_url="https://adventofcode.com/${year}/day/${day}/input"
 echo "Downloading input for $year day $day to $puzzle_file"
 mkdir -p "$puzzle_folder"
 curl "${puzzle_url}" -H "cookie: session=${AOC_SESSION_COOKIE}" -o "${puzzle_file}" 2>/dev/null
+
+
+
+# https://github.com/MikeD89/advent-of-code-typescript/blob/main/login.ts
